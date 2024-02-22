@@ -1,0 +1,50 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, 11vmin);
+  grid-template-rows: repeat(8, 11vmin);
+}
+
+.square {
+  width: 11vmin;
+  height: 11vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Correctly alternate the colors */
+.chess-board .square:nth-of-type(odd) {
+  background-color: #B58863; /* Dark squares */
+}
+
+.chess-board .square:nth-of-type(even) {
+  background-color: #F0D9B5; /* Light squares */
+}
+
+.chess-board .row:nth-child(even) .square:nth-of-type(odd) {
+  background-color: #F0D9B5;
+}
+
+.chess-board .row:nth-child(even) .square:nth-of-type(even) {
+  background-color: #B58863;
+}
+
+
+.chess-piece {
+  width: 100%; /* Adjust based on your board size */
+  height: 100%;
+  fill: currentColor; /* Allows color to be inherited or directly controlled via CSS */
+}
+
+/* Example of a hover effect */
+.chess-piece:hover {
+  opacity: 0.8;
+}
