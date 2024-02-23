@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #414141;
 }
 
 .chess-board {
@@ -20,7 +20,7 @@ body {
   align-items: center;
 }
 
-/* Correctly alternate the colors */
+/* Alternate the colors */
 .chess-board .square:nth-of-type(odd) {
   background-color: #B58863; /* Dark squares */
 }
@@ -39,9 +39,8 @@ body {
 
 
 .chess-piece {
-  width: 100%; /* Adjust based on your board size */
-  height: 100%;
-  fill: currentColor; /* Allows color to be inherited or directly controlled via CSS */
+  width: 100%;
+  height: auto;
 }
 
 /* Example of a hover effect */
