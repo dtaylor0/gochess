@@ -12,109 +12,115 @@
     <link rel="stylesheet" href="static/styles/board.css">
 </head>
 
-<body>
-    <div class="chess-board">
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square">
-                <svg class="chess-piece" draggable="true" ondragstart="dragPiece(event)" preserveAspectRatio="xMidYMid meet">
-                    <use href="static/images/pieces.svg#black-king"></use>
-                </svg>
+    <body>
+        <div class="chess-board">
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-        </div>
-        <!-- End of one row -->
-        <div class="row">
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square">
-                <svg class="chess-piece" draggable="true" preserveAspectRatio="xMidYMid meet">
-                    <use href="static/images/pieces.svg#white-knight"></use>
-                </svg>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="square">
-                <svg class="chess-piece" draggable="true" preserveAspectRatio="xMidYMid meet">
-                    <use href="static/images/pieces.svg#white-king"></use>
-                </svg>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </div>
-            <div class="square"></div>
-            <div class="square"></div>
-            <div class="square"></div>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="k" class="chess-piece" draggable="true" ondragstart="dragPiece(event)"> 
+                        <svg preserveAspectRatio="xMidYMid meet">
+                            <use href="static/images/pieces.svg#black-king"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <!-- End of one row -->
+            <div class="row">
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="N" class="chess-piece" draggable="true" ondragstart="dragPiece(event)"> 
+                        <svg preserveAspectRatio="xMidYMid meet">
+                            <use href="static/images/pieces.svg#white-knight"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="K" class="chess-piece" draggable="true" ondragstart="dragPiece(event)"> 
+                        <svg preserveAspectRatio="xMidYMid meet">
+                            <use href="static/images/pieces.svg#white-king"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="square" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <!-- End of one row -->
         </div>
-        <!-- End of one row -->
-    </div>
-</body>
+    </body>
 
 </html>

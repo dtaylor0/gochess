@@ -38,7 +38,7 @@ body {
 }
 
 
-.chess-piece {
+.chess-piece svg {
   width: 100%;
   height: auto;
 }
