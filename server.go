@@ -12,7 +12,7 @@ import (
 func main() {
 
 	// perspective := rand.Intn(1)
-	// position := "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+	// fen_start := "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
 	// move := "e4"
 
 	logger := log.New(os.Stdout, "", 0)
@@ -45,9 +45,9 @@ func main() {
 		// 	payload.FEN,
 		// 	payload.Perspective,
 		// )
-        // if err != nil {
-        //     return err
-        // }
+		// if err != nil {
+		//     return err
+		// }
 
 		return c.Render("board", fiber.Map{})
 	})
@@ -57,9 +57,9 @@ func main() {
 
 }
 
-func createBoard(position string, perspective int) {
+func createBoard(fen string, perspective int) {
 }
 
-func applyMove(move string, position string, perspective int) (string, error) {
+func applyMove(move string, fen string, perspective int) (string, error) {
 	return "", nil
 }
