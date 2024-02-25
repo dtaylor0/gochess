@@ -21,5 +21,6 @@ function allowDrop(e) {
 function drop(e) {
     e.preventDefault();
     const data = e.dataTransfer.getData("text");
-    e.target.appendChild(document.getElementById(data));
+    const el = document.getElementById(data);
+    e.target.appendChild(el);
 }

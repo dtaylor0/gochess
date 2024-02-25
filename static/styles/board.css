@@ -7,9 +7,13 @@ body {
 }
 
 .chess-board {
-  display: grid;
-  grid-template-columns: repeat(8, 11vmin);
-  grid-template-rows: repeat(8, 11vmin);
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
 .square {
