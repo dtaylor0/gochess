@@ -1,0 +1,34 @@
+{{define "piece"}}
+    {{$chessPiece := ""}}
+    {{if eq .Piece "k"}}
+        {{$chessPiece = "black-king"}}
+    {{else if eq .Piece "K"}}
+        {{$chessPiece = "white-king"}}
+    {{else if eq .Piece "q"}}
+        {{$chessPiece = "black-queen"}}
+    {{else if eq .Piece "Q"}}
+        {{$chessPiece = "white-queen"}}
+    {{else if eq .Piece "b"}}
+        {{$chessPiece = "black-bishop"}}
+    {{else if eq .Piece "B"}}
+        {{$chessPiece = "white-bishop"}}
+    {{else if eq .Piece "n"}}
+        {{$chessPiece = "black-knight"}}
+    {{else if eq .Piece "N"}}
+        {{$chessPiece = "white-knight"}}
+    {{else if eq .Piece "r"}}
+        {{$chessPiece = "black-rook"}}
+    {{else if eq .Piece "R"}}
+        {{$chessPiece = "white-rook"}}
+    {{else if eq .Piece "p"}}
+        {{$chessPiece = "black-pawn"}}
+    {{else if eq .Piece "P"}}
+        {{$chessPiece = "white-pawn"}}
+    {{else}}
+    {{end}}
+<div id="{{.Id}}" class="chess-piece {{.Piece}}" draggable="true" ondragstart="dragPiece(event)"> 
+    <svg preserveAspectRatio="xMidYMid meet">
+        <use href="static/images/pieces.svg#{{$chessPiece}}"></use>
+    </svg>
+</div>
+{{end}}

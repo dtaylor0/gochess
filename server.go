@@ -1,19 +1,22 @@
 package main
 
 import (
-	"html/template"
 	"log"
+	"math/rand"
 	"os"
+	"slices"
+	"strings"
 	"unicode"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
 )
 
+type BoardRows [][]map[string]string
+
 func main() {
 
-	// perspective := rand.Intn(1)
-	// fen_start := "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+	fen_start := "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
 	// move := "e4"
 
 	logger := log.New(os.Stdout, "", 0)
@@ -28,27 +31,84 @@ func main() {
 	})
 
 	app.Get("/board", func(c *fiber.Ctx) error {
-		board2_input := [8][8]string{
+		perspective := rand.Intn(1)
+		board_input := createBoard(fen_start, perspective)
+		board_input = BoardRows{
 			{
-				"r", "n", "b", "q", "k", "b", "n", "r",
+				{"Piece": "r", "Id": "ra8"},
+				{"Piece": "n", "Id": "nb8"},
+				{"Piece": "b", "Id": "bc8"},
+				{"Piece": "q", "Id": "qd8"},
+				{"Piece": "k", "Id": "ke8"},
+				{"Piece": "b", "Id": "bf8"},
+				{"Piece": "n", "Id": "ng8"},
+				{"Piece": "r", "Id": "rh8"},
 			}, {
-				"p", "p", "p", "p", "p", "p", "p", "p",
+				{"Piece": "p", "Id": "pa7"},
+				{"Piece": "p", "Id": "pb7"},
+				{"Piece": "p", "Id": "pc7"},
+				{"Piece": "p", "Id": "pd7"},
+				{"Piece": "p", "Id": "pe7"},
+				{"Piece": "p", "Id": "pf7"},
+				{"Piece": "p", "Id": "pg7"},
+				{"Piece": "p", "Id": "ph7"},
 			}, {
-				"", "", "", "", "", "", "", "",
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
 			}, {
-				"", "", "", "", "", "", "", "",
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
 			}, {
-				"", "", "", "", "", "", "", "",
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
 			}, {
-				"", "", "", "", "", "", "", "",
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
+				{"Piece": "", "Id": ""},
 			}, {
-				"P", "P", "P", "P", "P", "P", "P", "P",
-            }, {
-				"R", "N", "B", "Q", "K", "B", "N", "R",
-            },
+				{"Piece": "P", "Id": "pa2"},
+				{"Piece": "P", "Id": "pb2"},
+				{"Piece": "P", "Id": "pc2"},
+				{"Piece": "P", "Id": "pd2"},
+				{"Piece": "P", "Id": "pe2"},
+				{"Piece": "P", "Id": "pf2"},
+				{"Piece": "P", "Id": "pg2"},
+				{"Piece": "P", "Id": "ph2"},
+			}, {
+				{"Piece": "R", "Id": "Ra1"},
+				{"Piece": "N", "Id": "Nb1"},
+				{"Piece": "B", "Id": "Bc1"},
+				{"Piece": "Q", "Id": "Qd1"},
+				{"Piece": "K", "Id": "Ke1"},
+				{"Piece": "B", "Id": "Bf1"},
+				{"Piece": "N", "Id": "Ng1"},
+				{"Piece": "R", "Id": "Rh1"},
+			},
 		}
-        return c.Render("board2", fiber.Map{"Rows": board2_input})
-		return c.Render("pieces/K", fiber.Map{}, "square", "board")
+		return c.Render("board", fiber.Map{"Rows": board_input})
 	})
 
 	app.Get("/board/update", func(c *fiber.Ctx) error {
@@ -78,29 +138,32 @@ func main() {
 
 }
 
-func createBoard(fen string, perspective int) *template.Template {
-	tpl := template.New("board")
-	skip := 0
-	if perspective == 0 {
-		for _, c := range fen {
-			if skip > 0 {
-				skip--
-				// TODO: add empty square
-			}
-			if unicode.IsDigit(c) {
-				skip = int(c-'0') - 1
-				// TODO: add empty square
-			} else {
-				// TODO: add square with piece
-			}
-		}
-		return tpl
-	}
-	for i := len(fen); i >= 0; i-- {
-	}
-	return tpl
-}
-
 func applyMove(move string, fen string, perspective int) (string, error) {
 	return "", nil
+}
+
+func createBoard(fen string, perspective int) BoardRows {
+	var rows BoardRows
+	var currRow []map[string]string
+	if perspective == 0 {
+		for i, r := range fen {
+			if unicode.IsDigit(r) {
+				repeat := int(r - '0')
+				for repeat > 0 {
+					currRow = append(currRow, map[string]string{"Piece": "", "Id": ""})
+				}
+			} else if r == '/' {
+				rows = append(rows, currRow)
+				clear(currRow)
+			} else {
+				currRow = append(
+					currRow,
+					map[string]string{
+						"Piece": string([]rune{r}),
+						"Id":    strings.Join(string([]rune{r}), string(i)),
+					},
+				)
+			}
+		}
+	}
 }
