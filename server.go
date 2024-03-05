@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	"os"
 	"strings"
 	"unicode"
 
@@ -14,15 +13,15 @@ import (
 
 type BoardRows [][]map[string]string
 
+type UpdateBoard struct {
+	FEN         string `json:"fen"`
+	Perspective string `json:"perspective"`
+	Move        string `json:"move"`
+}
+
 func main() {
-
-	// move := "e4"
-
-	logger := log.New(os.Stdout, "", 0)
 	engine := html.New("./views", ".html")
-
 	app := fiber.New(fiber.Config{Views: engine})
-
 	app.Static("/static", "./static")
 
 	app.Get("/", func(c *fiber.Ctx) error {
@@ -31,17 +30,13 @@ func main() {
 
 	app.Get("/board", func(c *fiber.Ctx) error {
 		perspective := rand.Intn(2)
-		fen_start := "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
-        board_input := createBoard(fen_start, perspective)
-		return c.Render("board", fiber.Map{"Rows": board_input})
+		startingFen := "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+		boardInput := createBoard(startingFen, perspective)
+		return c.Render("board", fiber.Map{"Rows": boardInput})
 	})
 
 	app.Get("/board/update", func(c *fiber.Ctx) error {
-		payload := struct {
-			FEN         string `json:"fen"`
-			Perspective string `json:"perspective"`
-			Move        string `json:"move"`
-		}{}
+		payload := UpdateBoard{}
 		if err := c.BodyParser(&payload); err != nil {
 			return err
 		}
@@ -58,7 +53,7 @@ func main() {
 		return c.Render("board", fiber.Map{})
 	})
 
-	logger.Println("Hello from logger")
+	log.Println("Hello from logger")
 	app.Listen(":3000")
 
 }
@@ -68,11 +63,11 @@ func applyMove(move string, fen string, perspective int) (string, error) {
 }
 
 func reverseString(s string) string {
-	res := ""
-	for _, r := range s {
-		res = strings.Join([]string{string(r), res}, "")
+	r := []rune(s)
+	for i, j := 0, len(r)-1; i < j; i, j = i+1, j-1 {
+		r[i], r[j] = r[j], r[i]
 	}
-	return res
+	return string(r)
 }
 
 func createBoard(fen string, perspective int) BoardRows {
@@ -101,6 +96,6 @@ func createBoard(fen string, perspective int) BoardRows {
 			)
 		}
 	}
-    rows = append(rows, currRow)
+	rows = append(rows, currRow)
 	return rows
 }
